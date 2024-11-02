@@ -1,0 +1,41 @@
+@startuml
+actor User
+participant "Command: import:products" as Command
+participant "HTTP Client" as HttpClient
+participant "Job: FecthProductsImportFile" as Job
+participant "Produto Model" as Produto
+participant "Database" as DB
+
+User -> Command : Executar import:products
+Command -> HttpClient : GET https://challenges.coode.sh/food/data/json/index.txt
+HttpClient -> Command : Resposta HTTP (sucesso ou erro)
+
+alt Requisição bem-sucedida
+    Command -> Command : Processar resposta
+    Command -> Command : Dividir conteúdo em linhas
+
+    loop Iterar sobre cada linha
+        Command -> DB : Verificar se o arquivo já foi importado
+        alt Arquivo não importado
+            Command -> Job : Despachar FecthProductsImportFile
+            Command -> DB : Inserir nome do arquivo em files_imported
+        else Arquivo já importado
+            Command -> Command : Ignorar arquivo
+        end
+    end
+else Requisição falhou
+    Command -> Command : Exibir erro "Não foi possível ler o arquivo."
+end
+
+Job -> HttpClient : GET https://challenges.coode.sh/food/data/json/{fileName}
+HttpClient -> Job : Resposta HTTP
+
+alt Requisição bem-sucedida
+    Job -> Job : Processar conteúdo do arquivo
+    Job -> Produto : Criar novo produto
+    Job -> DB : Inserir produto no banco de dados
+else Requisição falhou
+    Job -> Job : Logar erro
+end
+
+@enduml

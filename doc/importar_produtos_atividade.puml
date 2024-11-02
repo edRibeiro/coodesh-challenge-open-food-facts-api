@@ -1,0 +1,26 @@
+@startuml
+start
+
+:Executar comando `import:products`;
+:Requisição HTTP para obter a lista de arquivos;
+
+if (Requisição bem-sucedida?) then (sim)
+    :Processar o conteúdo da resposta;
+    :Dividir conteúdo em linhas;
+
+    repeat
+        :Iterar sobre cada linha (nome do arquivo);
+        if (Arquivo já importado?) then (não)
+            :Despachar o job `FecthProductsImportFile`;
+            :Inserir nome do arquivo em `files_imported`;
+        else (sim)
+            :Ignorar arquivo já importado;
+        endif
+    repeat while (Existem mais arquivos)
+
+else (não)
+    :Exibir erro "Não foi possível ler o arquivo.";
+endif
+
+stop
+@enduml

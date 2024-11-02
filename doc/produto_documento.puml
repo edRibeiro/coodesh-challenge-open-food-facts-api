@@ -1,0 +1,28 @@
+@startuml
+entity "Produtos" {
+    * id : BIGINT (Primary Key)
+    * code : VARCHAR (Unique)
+    * status : ENUM('draft', 'trash', 'published')
+    * url : VARCHAR
+    * creator : VARCHAR
+    * created_t : UNSIGNED INTEGER
+    * last_modified_t : UNSIGNED INTEGER
+    * product_name : VARCHAR
+    * quantity : VARCHAR
+    * brands : VARCHAR
+    * categories : VARCHAR
+    * labels : VARCHAR
+    * cities : VARCHAR (Nullable)
+    * purchase_places : VARCHAR
+    * stores : VARCHAR
+    * ingredients_text : TEXT
+    * traces : VARCHAR (Nullable)
+    * serving_size : VARCHAR
+    * serving_quantity : DECIMAL(8, 2)
+    * nutriscore_score : INTEGER
+    * nutriscore_grade : CHAR(1)
+    * main_category : VARCHAR
+    * image_url : VARCHAR
+    * imported_t : TIMESTAMP
+}
+@enduml

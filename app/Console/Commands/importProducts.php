@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Jobs\FecthProductsImportFile;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -28,6 +29,7 @@ class importProducts extends Command
      */
     public function handle()
     {
+        Cache::put('last_cron_run', now()->toDateTimeString());
         $url = 'https://challenges.coode.sh/food/data/json/index.txt'; // IMPORT_URL
         $response = Http::get($url);
         if ($response->successful()) {

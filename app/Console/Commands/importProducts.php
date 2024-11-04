@@ -33,8 +33,8 @@ class importProducts extends Command
         if ($response->successful()) {
             $conteudo = $response->body();
             $linhas = explode(PHP_EOL, $conteudo);
-            foreach ($linhas as $fileName) {
-                if (DB::table('files_imported')->where('file_name', '=', $fileName)->doesntExist()) {
+            foreach ($linhas as $key => $fileName) {
+                if (DB::table('files_imported')->where('file_name', '=', $fileName)->doesntExist() && !empty($fileName)) {
                     FecthProductsImportFile::dispatch($fileName);
                     DB::table('files_imported')->insert(['file_name' => $fileName]);
                 }

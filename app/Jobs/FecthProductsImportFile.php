@@ -25,6 +25,7 @@ class FecthProductsImportFile implements ShouldQueue
      */
     public function handle(): void
     {
+        info("Import file: $this->fileName.");
         $gzUrl = "https://challenges.coode.sh/food/data/json/$this->fileName";
         $response = Http::get($gzUrl);
         $compressedContent = $response->getBody()->getContents();

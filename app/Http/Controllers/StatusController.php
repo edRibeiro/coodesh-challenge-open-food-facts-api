@@ -7,6 +7,60 @@ use Illuminate\Support\Facades\DB;
 
 class StatusController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/",
+     *     tags={"API"},
+     *     summary="Detalhes da API",
+     *     description="Detalhes da API, se conexão leitura e escrita com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Detalhes da API retornados com sucesso",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(
+     *                 property="api_version",
+     *                 type="string",
+     *                 description="Versão da API"
+     *             ),
+     *             @OA\Property(
+     *                 property="database_connection",
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="read",
+     *                     type="boolean",
+     *                     description="Status da conexão de leitura com a base de dados"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="write",
+     *                     type="boolean",
+     *                     description="Status da conexão de escrita com a base de dados"
+     *                 )
+     *             ),
+     *             @OA\Property(
+     *                 property="last_cron_run",
+     *                 type="string",
+     *                 format="date-time",
+     *                 description="Horário da última execução do CRON"
+     *             ),
+     *             @OA\Property(
+     *                 property="uptime",
+     *                 type="string",
+     *                 description="Tempo online da aplicação"
+     *             ),
+     *             @OA\Property(
+     *                 property="memory_usage",
+     *                 type="string",
+     *                 description="Uso de memória da aplicação em bytes"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Erro interno do servidor"
+     *     )
+     * )
+     */
     public function status()
     {
         $status = [

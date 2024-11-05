@@ -6,6 +6,14 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
+/**
+ * @OA\Schema(
+ *     title="UpdateProdutoRequest",
+ *     description="Requisição para atualizar um produto",
+ *     type="object",
+ *     required={"product_name", "brands", "categories", "ingredients_text", "serving_size", "serving_quantity", "nutriscore_score", "nutriscore_grade", "main_category"}
+ * )
+ */
 class UpdateProdutoRequest extends FormRequest
 {
     /**
@@ -40,12 +48,40 @@ class UpdateProdutoRequest extends FormRequest
             'serving_size' => 'sometimes|string',
             'serving_quantity' => 'sometimes|numeric|min:0',
             'nutriscore_score' => 'sometimes|integer|min:0',
-            'nutriscore_grade' => 'sometimes|string|size:1|in:A,B,C,D,E',
+            'nutriscore_grade' => 'sometimes|string|size:1|in:a,b,c,d,e',
             'main_category' => 'sometimes|string',
             'image_url' => 'nullable|url',
         ];
     }
 
+    /**
+     * @OA\Response(
+     *     response=422,
+     *     description="Erro de validação",
+     *     @OA\JsonContent(
+     *         @OA\Property(property="errors", type="object",
+     *             @OA\Property(property="status", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="url", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="creator", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="product_name", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="brands", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="categories", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="labels", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="cities", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="purchase_places", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="stores", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="ingredients_text", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="traces", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="serving_size", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="serving_quantity", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="nutriscore_score", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="nutriscore_grade", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="main_category", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="image_url", type="array", @OA\Items(type="string")),
+     *         )
+     *     )
+     * )
+     */
     public function messages()
     {
         return [

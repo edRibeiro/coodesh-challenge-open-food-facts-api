@@ -5,96 +5,210 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/auth/signup": {
-            "post": {
+        "/api": {},
+        "/api/products": {
+            "get": {
                 "tags": [
-                    "Authentication"
+                    "Products"
                 ],
-                "summary": "Create a new user account",
-                "description": "Register a new user by providing their name, email, password, and password confirmation.",
-                "operationId": "44f48e430821a748d991ae37fb7c652a",
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "required": [
-                                    "name",
-                                    "email",
-                                    "password",
-                                    "password_confirmation"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "User 1"
-                                    },
-                                    "email": {
-                                        "type": "string",
-                                        "format": "email",
-                                        "example": "example@email.com"
-                                    },
-                                    "password": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "password"
-                                    },
-                                    "password_confirmation": {
-                                        "type": "string",
-                                        "format": "password",
-                                        "example": "password"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
+                "summary": "Retrieves a list of products",
+                "operationId": "f9a178df171363d3d3fbace51789be7d",
                 "responses": {
-                    "201": {
-                        "description": "User successfully registered",
+                    "200": {
+                        "description": "A list of products retrieved successfully.",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "name": {
-                                            "type": "string",
-                                            "example": "User 1"
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "code": {
+                                                        "type": "string",
+                                                        "example": "4000400156570"
+                                                    },
+                                                    "url": {
+                                                        "type": "string",
+                                                        "format": "uri",
+                                                        "example": "http://world-en.openfoodfacts.org/product/4000400156570/preparado-para-hacer-tortitas-maizena"
+                                                    },
+                                                    "creator": {
+                                                        "type": "string",
+                                                        "example": "kiliweb"
+                                                    },
+                                                    "created_t": {
+                                                        "type": "integer",
+                                                        "example": 1516291652
+                                                    },
+                                                    "last_modified_t": {
+                                                        "type": "integer",
+                                                        "example": 1610544808
+                                                    },
+                                                    "product_name": {
+                                                        "type": "string",
+                                                        "example": "Preparado para hacer tortitas"
+                                                    },
+                                                    "quantity": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "brands": {
+                                                        "type": "string",
+                                                        "example": "Maizena"
+                                                    },
+                                                    "categories": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "labels": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "cities": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "purchase_places": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "stores": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "ingredients_text": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "traces": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "serving_size": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "serving_quantity": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "nutriscore_score": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "nutriscore_grade": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "main_category": {
+                                                        "type": "string",
+                                                        "example": ""
+                                                    },
+                                                    "image_url": {
+                                                        "type": "string",
+                                                        "format": "uri",
+                                                        "example": "https://static.openfoodfacts.org/images/products/400/040/015/6570/front_fr.15.400.jpg"
+                                                    },
+                                                    "status": {
+                                                        "type": "string",
+                                                        "example": "published"
+                                                    },
+                                                    "imported_t": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-11-05T02:10:37.638000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-11-05T02:10:37.818000Z"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-11-05T02:10:37.818000Z"
+                                                    },
+                                                    "id": {
+                                                        "type": "string",
+                                                        "example": "67297e9df4c37a710d06bac5"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         },
-                                        "email": {
-                                            "type": "string",
-                                            "example": "example@email.com"
+                                        "links": {
+                                            "properties": {
+                                                "first": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/api/products?page=1"
+                                                },
+                                                "last": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/api/products?page=47"
+                                                },
+                                                "prev": {
+                                                    "type": "string",
+                                                    "example": null,
+                                                    "nullable": true
+                                                },
+                                                "next": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/api/products?page=2"
+                                                }
+                                            },
+                                            "type": "object"
                                         },
-                                        "id": {
-                                            "type": "string",
-                                            "format": "uuid",
-                                            "example": "9d43789a-1553-470c-b0ee-b33e000139bb"
-                                        },
-                                        "created_at": {
-                                            "type": "string",
-                                            "format": "date-time",
-                                            "example": "2024-10-17T02:11:57.000000Z"
-                                        },
-                                        "updated_at": {
-                                            "type": "string",
-                                            "format": "date-time",
-                                            "example": "2024-10-17T02:11:57.000000Z"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Validation failed"
+                                        "meta": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "from": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "last_page": {
+                                                    "type": "integer",
+                                                    "example": 47
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "url": {
+                                                                "type": "string",
+                                                                "nullable": true
+                                                            },
+                                                            "label": {
+                                                                "type": "string"
+                                                            },
+                                                            "active": {
+                                                                "type": "boolean"
+                                                            }
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "path": {
+                                                    "type": "string",
+                                                    "example": "http://localhost/api/products"
+                                                },
+                                                "per_page": {
+                                                    "type": "integer",
+                                                    "example": 15
+                                                },
+                                                "to": {
+                                                    "type": "integer",
+                                                    "example": 15
+                                                },
+                                                "total": {
+                                                    "type": "integer",
+                                                    "example": 699
+                                                }
+                                            },
+                                            "type": "object"
                                         }
                                     },
                                     "type": "object"
@@ -105,199 +219,938 @@
                 }
             }
         },
-        "/api/auth/signin": {
-            "post": {
+        "/api/products/{code}": {
+            "get": {
                 "tags": [
-                    "Authentication"
+                    "Products"
                 ],
-                "summary": "User login",
-                "description": "Authenticates the user and returns an access token.",
-                "operationId": "authSignin",
-                "requestBody": {
-                    "description": "User credentials",
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "properties": {
-                                    "email": {
-                                        "description": "User email",
-                                        "type": "string",
-                                        "example": "example@email.com"
-                                    },
-                                    "password": {
-                                        "description": "User password",
-                                        "type": "string",
-                                        "example": "password"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Successful login",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "description": "User ID",
-                                            "type": "string",
-                                            "example": "9d43789a-1553-470c-b0ee-b33e000139bb"
-                                        },
-                                        "name": {
-                                            "description": "User name",
-                                            "type": "string",
-                                            "example": "User 1"
-                                        },
-                                        "token": {
-                                            "description": "JWT token",
-                                            "type": "string",
-                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9hdXRoL3NpZ25pbiIsImlhdCI6MTcyOTIwMTkxMCwiZXhwIjoxNzI5MjA1NTEwLCJuYmYiOjE3MjkyMDE5MTAsImp0aSI6IllrZTVOR3pFVjd5MVAyWnAiLCJzdWIiOiI5ZDQzNzg5YS0xNTUzLTQ3MGMtYjBlZS1iMzNlMDAwMTM5YmIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.O0_1TC_pSeZZvs_idvV85IUuD0InqtzXzBOKzAm2kSQ"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Invalid credentials",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "example": "Invalid credentials"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "example": "The email field is required."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/api/auth/logout": {
-            "post": {
-                "tags": [
-                    "Authentication"
-                ],
-                "summary": "Logout user",
-                "description": "Logs the user out by invalidating the token.",
-                "operationId": "authLogout",
-                "responses": {
-                    "200": {
-                        "description": "Successfully logged out",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Successfully logged out"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "error": {
-                                            "type": "string",
-                                            "example": "Unauthenticated"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
+                "summary": "Retrieve a product by its code",
+                "operationId": "bfc37a3669269533c6a40f5b6769391a",
+                "parameters": [
                     {
-                        "bearerAuth": []
+                        "name": "code",
+                        "in": "path",
+                        "description": "The code of the product to retrieve.",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "4000400156570"
+                        }
                     }
-                ]
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A product retrieved successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string",
+                                                    "example": "4000400156570"
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "example": "http://world-en.openfoodfacts.org/product/4000400156570/preparado-para-hacer-tortitas-maizena"
+                                                },
+                                                "creator": {
+                                                    "type": "string",
+                                                    "example": "kiliweb"
+                                                },
+                                                "created_t": {
+                                                    "type": "integer",
+                                                    "example": 1516291652
+                                                },
+                                                "last_modified_t": {
+                                                    "type": "integer",
+                                                    "example": 1610544808
+                                                },
+                                                "product_name": {
+                                                    "type": "string",
+                                                    "example": "Preparado para hacer tortitas"
+                                                },
+                                                "quantity": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "brands": {
+                                                    "type": "string",
+                                                    "example": "Maizena"
+                                                },
+                                                "categories": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "labels": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "cities": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "purchase_places": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "stores": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "ingredients_text": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "traces": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "serving_size": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "serving_quantity": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "nutriscore_score": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "nutriscore_grade": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "main_category": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "image_url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "example": "https://static.openfoodfacts.org/images/products/400/040/015/6570/front_fr.15.400.jpg"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "published"
+                                                },
+                                                "imported_t": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.638000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.818000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.818000Z"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "67297e9df4c37a710d06bac5"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{code}": {
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Atualiza um produto existente",
+                "operationId": "dfcefcf2a59ae74b797c0d110b5f9df0",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Código do produto a ser atualizado",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "url": {
+                                        "type": "string",
+                                        "example": "http://world-en.openfoodfacts.org/product/0073490180286/absolutely-gluten-free-classic-coconut-macaroons-toasted-coconut-royal-wine-corporation"
+                                    },
+                                    "creator": {
+                                        "type": "string",
+                                        "example": "usda-ndb-import"
+                                    },
+                                    "product_name": {
+                                        "type": "string",
+                                        "example": "Absolutely, Gluten Free Classic Coconut Macaroons, Toasted Coconut"
+                                    },
+                                    "quantity": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "brands": {
+                                        "type": "string",
+                                        "example": "Royal Wine Corporation"
+                                    },
+                                    "categories": {
+                                        "type": "string",
+                                        "example": "Snacks, Sweet snacks, Biscuits and cakes, Biscuits, Pastries, Coconut Macaroons"
+                                    },
+                                    "labels": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "cities": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "purchase_places": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "stores": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "ingredients_text": {
+                                        "type": "string",
+                                        "example": "Unsweetened sulfite free coconut, invert sugar, tapioca, egg whites."
+                                    },
+                                    "traces": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "serving_size": {
+                                        "type": "string",
+                                        "example": "2 MACAROONS (28 g)"
+                                    },
+                                    "serving_quantity": {
+                                        "type": "integer",
+                                        "example": 28
+                                    },
+                                    "nutriscore_score": {
+                                        "type": "integer",
+                                        "example": 21
+                                    },
+                                    "nutriscore_grade": {
+                                        "type": "string",
+                                        "example": "e"
+                                    },
+                                    "main_category": {
+                                        "type": "string",
+                                        "example": "en:coconut-macaroons"
+                                    },
+                                    "image_url": {
+                                        "type": "string",
+                                        "example": ""
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "draft",
+                                            "trash",
+                                            "published"
+                                        ],
+                                        "example": "trash"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "A product retrieved successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "string",
+                                                    "example": "4000400156570"
+                                                },
+                                                "url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "example": "http://world-en.openfoodfacts.org/product/4000400156570/preparado-para-hacer-tortitas-maizena"
+                                                },
+                                                "creator": {
+                                                    "type": "string",
+                                                    "example": "kiliweb"
+                                                },
+                                                "created_t": {
+                                                    "type": "integer",
+                                                    "example": 1516291652
+                                                },
+                                                "last_modified_t": {
+                                                    "type": "integer",
+                                                    "example": 1610544808
+                                                },
+                                                "product_name": {
+                                                    "type": "string",
+                                                    "example": "Preparado para hacer tortitas"
+                                                },
+                                                "quantity": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "brands": {
+                                                    "type": "string",
+                                                    "example": "Maizena"
+                                                },
+                                                "categories": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "labels": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "cities": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "purchase_places": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "stores": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "ingredients_text": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "traces": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "serving_size": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "serving_quantity": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "nutriscore_score": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "nutriscore_grade": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "main_category": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "image_url": {
+                                                    "type": "string",
+                                                    "format": "uri",
+                                                    "example": "https://static.openfoodfacts.org/images/products/400/040/015/6570/front_fr.15.400.jpg"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "published"
+                                                },
+                                                "imported_t": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.638000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.818000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2024-11-05T02:10:37.818000Z"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "67297e9df4c37a710d06bac5"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Produto não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Produto não encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "properties": {
+                                                "status": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "url": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "creator": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "product_name": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "brands": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "categories": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "labels": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "cities": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "purchase_places": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "stores": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "ingredients_text": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "traces": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "serving_size": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "serving_quantity": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "nutriscore_score": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "nutriscore_grade": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "main_category": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "image_url": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Erro ao atualizar o produto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Remove um produto existente",
+                "operationId": "789513d4640e8392e4c77f9f4347ba04",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Código do produto a ser removido",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Produto removido com sucesso"
+                    },
+                    "404": {
+                        "description": "Produto não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Produto não encontrado."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Erro ao remover o produto."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "API"
+                ],
+                "summary": "Detalhes da API",
+                "description": "Detalhes da API, se conexão leitura e escrita com a base de dados está OK, horário da última vez que o CRON foi executado, tempo online e uso de memória.",
+                "operationId": "f02ca48232cb9e9d58a9ff372ceaa68f",
+                "responses": {
+                    "200": {
+                        "description": "Detalhes da API retornados com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "api_version": {
+                                            "description": "Versão da API",
+                                            "type": "string"
+                                        },
+                                        "database_connection": {
+                                            "properties": {
+                                                "read": {
+                                                    "description": "Status da conexão de leitura com a base de dados",
+                                                    "type": "boolean"
+                                                },
+                                                "write": {
+                                                    "description": "Status da conexão de escrita com a base de dados",
+                                                    "type": "boolean"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "last_cron_run": {
+                                            "description": "Horário da última execução do CRON",
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "uptime": {
+                                            "description": "Tempo online da aplicação",
+                                            "type": "string"
+                                        },
+                                        "memory_usage": {
+                                            "description": "Uso de memória da aplicação em bytes",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Erro interno do servidor"
+                    }
+                }
             }
         }
     },
     "components": {
         "schemas": {
-            "User": {
-                "title": "User",
-                "description": "User model",
+            "UpdateProdutoRequest": {
+                "title": "UpdateProdutoRequest",
+                "description": "Requisição para atualizar um produto",
                 "required": [
-                    "id",
-                    "name",
-                    "email"
+                    "product_name",
+                    "brands",
+                    "categories",
+                    "ingredients_text",
+                    "serving_size",
+                    "serving_quantity",
+                    "nutriscore_score",
+                    "nutriscore_grade",
+                    "main_category"
                 ],
+                "type": "object"
+            },
+            "Produto": {
+                "title": "Produto",
+                "description": "Schema para o modelo Produto",
                 "properties": {
                     "id": {
-                        "description": "User's unique identifier",
-                        "type": "string",
-                        "format": "uuid",
-                        "example": "9d43789a-1553-470c-b0ee-b33e000139bb"
+                        "description": "ID único do produto",
+                        "type": "integer"
                     },
-                    "name": {
-                        "description": "User's name",
-                        "type": "string",
-                        "example": "User 1"
+                    "code": {
+                        "description": "Código único do produto",
+                        "type": "string"
                     },
-                    "email": {
-                        "description": "User's email address",
+                    "status": {
+                        "description": "Status do produto",
                         "type": "string",
-                        "format": "email",
-                        "example": "example@email.com"
+                        "enum": [
+                            "draft",
+                            "trash",
+                            "published"
+                        ]
                     },
-                    "created_at": {
-                        "description": "Timestamp when the user was created",
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2024-10-17T02:11:57.000000Z"
+                    "url": {
+                        "description": "URL do produto",
+                        "type": "string"
                     },
-                    "updated_at": {
-                        "description": "Timestamp when the user was last updated",
+                    "creator": {
+                        "description": "Nome do criador do produto",
+                        "type": "string"
+                    },
+                    "created_t": {
+                        "description": "Timestamp de criação",
+                        "type": "integer"
+                    },
+                    "last_modified_t": {
+                        "description": "Timestamp da última modificação",
+                        "type": "integer"
+                    },
+                    "product_name": {
+                        "description": "Nome do produto",
+                        "type": "string"
+                    },
+                    "quantity": {
+                        "description": "Quantidade do produto",
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2024-10-17T02:11:57.000000Z"
+                        "nullable": true
+                    },
+                    "brands": {
+                        "description": "Marcas do produto",
+                        "type": "string"
+                    },
+                    "categories": {
+                        "description": "Categorias do produto",
+                        "type": "string"
+                    },
+                    "labels": {
+                        "description": "Rótulos do produto",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "cities": {
+                        "description": "Cidades onde o produto está disponível",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "purchase_places": {
+                        "description": "Locais de compra do produto",
+                        "type": "string"
+                    },
+                    "stores": {
+                        "description": "Lojas onde o produto está disponível",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "ingredients_text": {
+                        "description": "Ingredientes do produto",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "traces": {
+                        "description": "Traços e alergênicos do produto",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "serving_size": {
+                        "description": "Tamanho da porção do produto",
+                        "type": "string"
+                    },
+                    "serving_quantity": {
+                        "description": "Quantidade por porção",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "nutriscore_score": {
+                        "description": "Pontuação Nutri-Score",
+                        "type": "integer"
+                    },
+                    "nutriscore_grade": {
+                        "description": "Grau Nutri-Score (A, B, C, etc.)",
+                        "type": "string",
+                        "maxLength": 1
+                    },
+                    "main_category": {
+                        "description": "Categoria principal do produto",
+                        "type": "string"
+                    },
+                    "image_url": {
+                        "description": "URL da imagem do produto",
+                        "type": "string"
+                    },
+                    "imported_t": {
+                        "description": "Data e hora de importação do produto",
+                        "type": "string",
+                        "format": "date-time"
                     }
                 },
                 "type": "object"
+            }
+        },
+        "responses": {
+            "422": {
+                "description": "Erro de validação",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "url": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "creator": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "product_name": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "brands": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "categories": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "labels": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "cities": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "purchase_places": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "stores": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "ingredients_text": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "traces": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "serving_size": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "serving_quantity": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "nutriscore_score": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "nutriscore_grade": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "main_category": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "image_url": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         }
     },
     "tags": [
         {
-            "name": "Authentication",
-            "description": "Authentication"
+            "name": "Products",
+            "description": "Products"
+        },
+        {
+            "name": "API",
+            "description": "API"
         }
     ]
 }

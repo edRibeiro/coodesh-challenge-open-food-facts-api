@@ -8,6 +8,7 @@ use App\Http\Resources\ProdutoResource;
 use App\Models\Produto;
 use App\Enums\ProductStatus;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProdutoController extends Controller
@@ -247,7 +248,6 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        throw new \Exception("Error Processing Request", 1);
         return new ProdutoCollection(Produto::where("status", "=", ProductStatus::PUBLISHED)->paginate());
     }
 
@@ -734,5 +734,13 @@ class ProdutoController extends Controller
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
+    }
+
+    public function searsh(Request $request)
+    {
+        $products = Produto::search($request->query('q'))
+            ->where('status', 'published')
+            ->paginate();
+        return new ProdutoCollection($products);
     }
 }

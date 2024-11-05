@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Enums\ProductStatus;
+use Laravel\Scout\Searchable;
 use MongoDB\Laravel\Eloquent\Model;
 
 /**
@@ -146,7 +147,7 @@ use MongoDB\Laravel\Eloquent\Model;
 class Produto extends Model
 {
     /** @use HasFactory<\Database\Factories\ProdutoFactory> */
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $connection = 'mongodb';
 
@@ -163,4 +164,17 @@ class Produto extends Model
      * @var array
      */
     protected $fillable = ['code', 'url', 'creator', 'created_t', 'last_modified_t', 'product_name', 'quantity', 'brands', 'categories', 'labels', 'cities', 'purchase_places', 'stores', 'ingredients_text', 'traces', 'serving_size', 'serving_quantity', 'nutriscore_score', 'nutriscore_grade', 'main_category', 'image_url', 'imported_t', 'status'];
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array<string, mixed>
+     */
+    public function toSearchableArray()
+    {
+        return array_merge($this->toArray(), [
+            'id' => (string) $this->id,
+            'created_at' => $this->created_at->timestamp,
+        ]);
+    }
 }

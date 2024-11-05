@@ -247,6 +247,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        throw new \Exception("Error Processing Request", 1);
         return new ProdutoCollection(Produto::where("status", "=", ProductStatus::PUBLISHED)->paginate());
     }
 

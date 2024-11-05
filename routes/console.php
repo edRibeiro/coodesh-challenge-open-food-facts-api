@@ -2,4 +2,4 @@
 
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::command('import:products')->dailyAt('00:30');
+Schedule::command('import:products')->dailyAt(env('IMPORT_TIME', '00:30'));

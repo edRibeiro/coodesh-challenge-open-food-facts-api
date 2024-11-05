@@ -1,0 +1,18 @@
+@startuml
+start
+:Receber nome do arquivo no Job;
+:Baixar arquivo para local temporário;
+:Descomprimir o arquivo para obter dados;
+
+repeat
+    :Ler linha do arquivo descomprimido (JSON);
+    :Transformar JSON em array de dados necessários;
+    :Enviar array para Model de Produto;
+    :Persistir dados na base de dados com método create;
+repeat while (Não chegou no fim do arquivo ou 100 linhas processadas)
+
+ :Salvar nome do arquivo na base de dados;
+:Remover arquivo temporário da memória;
+stop
+
+@enduml

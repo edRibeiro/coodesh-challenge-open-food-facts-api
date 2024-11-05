@@ -1,0 +1,16 @@
+@startuml
+start
+
+:Executar comando "Importar Produtos";
+:Buscar arquivo com a lista de arquivos para importação;
+repeat
+    :Ler próxima linha da lista de arquivos;
+    if (Nome do arquivo existe na base de dados?) then (não)
+        :Enviar nome do arquivo para o Job;
+    endif
+repeat while (Há mais linhas na lista de arquivos)
+:Finalizar leitura da lista de arquivos;
+
+stop
+
+@enduml

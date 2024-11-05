@@ -1,0 +1,18 @@
+### Variables
+@apiurl = http://localhost/api
+
+### Get Products
+GET {{apiurl}}/products
+Content-Type: application/json
+
+### Get Product by CODE
+GET {{apiurl}}/products/73490180286
+Content-Type: application/json
+
+### PUT Product by CODE
+PUT {{apiurl}}/products/73490180286
+Content-Type: application/json
+
+### DELETE Product by CODE
+DELETE {{apiurl}}/products/73490180286
+Content-Type: application/json

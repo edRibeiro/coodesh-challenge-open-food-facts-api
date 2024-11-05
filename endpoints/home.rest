@@ -1,0 +1,6 @@
+### Variables
+@baseurl = http://localhost
+
+### home
+GET {{baseurl}}
+Content-Type: application/json

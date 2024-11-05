@@ -20,14 +20,14 @@ return new class extends Migration
             $table->unsignedInteger('created_t');
             $table->unsignedInteger('last_modified_t');
             $table->string('product_name');
-            $table->string('quantity');
+            $table->string('quantity')->nullable();
             $table->string('brands');
             $table->string('categories');
-            $table->string('labels');
+            $table->string('labels')->nullable();
             $table->string('cities')->nullable();
             $table->string('purchase_places');
-            $table->string('stores');
-            $table->text('ingredients_text');
+            $table->string('stores')->nullable();
+            $table->text('ingredients_text')->nullable();
             $table->string('traces')->nullable();
             $table->string('serving_size');
             $table->decimal('serving_quantity', 8, 2);

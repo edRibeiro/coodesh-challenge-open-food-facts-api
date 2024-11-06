@@ -1,5 +1,5 @@
 <h1 align="center">
-    Space Flight News API
+    Info Nutri Catalog API
 </h1>
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)
